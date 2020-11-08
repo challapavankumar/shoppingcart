@@ -128,7 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[STATIC_DIR,]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR/ 'staticfiles'
 MEDIA_URL='/image/download/'
 MEDIA_DIR=BASE_DIR
 

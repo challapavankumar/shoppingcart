@@ -28,7 +28,7 @@ SECRET_KEY = '3s5nt9ll*@_h))oywt+nppbl9+a03-cq+gmz3c9=iypwm=%jaa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,6 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[STATIC_DIR,]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL='/image/download/'
 MEDIA_DIR=BASE_DIR
 

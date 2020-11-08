@@ -1,0 +1,15 @@
+{% extends 'ecom/base.html' %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="text-center"> your product been updated successfully in cart</h1>
+        <h1 class="text-center ">
+            <a  class=" btn btn-primary" href=" {% url 'mycart' %}">cart</a>
+        </h1>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

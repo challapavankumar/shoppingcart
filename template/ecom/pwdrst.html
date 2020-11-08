@@ -1,0 +1,23 @@
+{% extends 'ecom/base.html' %}
+{% block title %}chowdary{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            {% if request.GET.m == "s" %}
+            <h1>Password reset link is sent to your email adress. Please check your email</h1>
+            {% else %}
+            {% if request.GET.m == 'e' %}
+            <h2>something went wrong enter again</h2>
+            {% endif %}
+            <form action=" " method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-info">Change</button>
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

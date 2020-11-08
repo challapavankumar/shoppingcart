@@ -1,0 +1,26 @@
+{% extends 'ecom/base.html' %}
+{% block title %}search box {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>search products for <span class="text-primary">{{request.GET.keyword}}  </span></h1>
+            {% for i in results %}
+               <div class="row ">
+                    <div class="col-md-5 ">
+                    <img src="{{i.image.url}}" class="img-fluid">
+                </div>
+                <div class="col-md-7 ">
+                    <h2><a href="{% url 'details' i.slug %}">{{i.title}}</a></h2>
+                    <small>{{i.description|truncatewords:20}}</small><br>
+
+                        <a class=" btn btn-primary" href="{% url 'mycart' %}" >Add to Cart</a>
+
+                </div>
+           </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

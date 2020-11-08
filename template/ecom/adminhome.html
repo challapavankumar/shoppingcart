@@ -1,0 +1,31 @@
+{% extends 'ecom/adminbase.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mx-auto">
+        <div class="col-sm-10">
+            <h2>pending orders</h2>
+            <table class="table">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th scope="col">Sno</th>
+                      <th scope="col">Customer</th>
+                      <th scope="col">Order Id</th>
+                      <th scope="col">Ordered On</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                      <tbody>
+                      {% for status in pendingorders %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                          <td>{{status.ordered_by}}</td>
+                            <td><a href="{% url 'adminordedtail' status.id %}">{{status.id}}</a></td>
+                          <td>{{status.created_at}}</td>
+                          <td>{{status.total}}</td>
+                        </tbody>
+                      {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

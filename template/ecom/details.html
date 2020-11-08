@@ -1,0 +1,32 @@
+{% extends 'ecom/base.html' %}
+{% block title %}{{ Product.title }}{% endblock %}
+{% block content %}
+<!--#product details page -->
+<h1>Product &nbsp;&nbsp;{{Product.title}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{Product.image.url}}" alt="" class="image-fluid w-100">
+            <div class="row">
+                {% for pi in Product.productimage_set.all %}
+                <div class="col-md-4 p-3">
+                    <a href="{{pi.image.url}}" type="_blank" t><img src="{{pi.image.url}}" class="img-fluid" alt="sorry"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h4>Category-{{Product.category}}</h4>
+            <h4>Price-<strike>{{Product.marked_price}}</strike></h4>
+            <h5>₹{{Product.selling_price}}</h5>
+            <a href="{% url 'add_cart' Product.id %}" class="btn btn-success">AddCart</a>
+            <p class="text-info">{{Product.warranty}}</p>
+            <p class="text-info">{{Product.return_policy}}</p>
+            <p style="font-size:medium;">{{Product.description}}</p>
+            <a class="btn btn-primary" href="/">Back to Home</a>
+            <small>Viewers&nbsp;{{Product.view_count}}</small>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

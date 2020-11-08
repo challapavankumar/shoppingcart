@@ -1,0 +1,46 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+
+
+
+<div class="container-fluid mt-2">
+    <div class="row mx-auto ">
+        {% for p in product_list %}
+            <div class="card mx-auto mt-3 ml-0" style="width: 18rem;">
+                <img src="{{p.image.url}}" class="card-img-top" alt="..." style="height:300px;object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'details' p.slug %}" >{{p.title}}</a></h5>
+                    <p class="card-text">Price:&nbsp;<strike>{{p.marked_price}}</strike>&nbsp;&nbsp;₹&nbsp;{{p.selling_price}}</p>
+                    <a href="{% url 'add_cart' p.id %}" class="btn btn-primary">Addcart</a>
+               </div>
+            </div>
+        {% endfor %}
+    </div>
+    <nav aria-label="Page navigation example border-right ">
+          <ul class="pagination justify-content-center bottom mt-3">
+              {% if product_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ product_list.previous_page_number }}">Previous</a>
+                    </li>
+              {% endif %}
+              {% for  i in  product_list.paginator.page_range %}
+              {% if i == product_list.number %}
+               <li class="page-item active"><a class="page-link">{{i}}</a></li>
+              {% else %}
+              <li class="page-item "><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+              {% endif %}
+              {% endfor %}
+            {% if product_list.has_next %}
+            <li class="page-item"> <a class="page-link" href="?page={{ product_list.next_page_number }}">next</a></li>
+              {% endif %}
+          </ul>
+    </nav>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

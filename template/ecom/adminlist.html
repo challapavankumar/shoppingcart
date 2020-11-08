@@ -1,0 +1,38 @@
+{% extends 'ecom/adminbase.html' %}
+{% block title %} Admin All products list{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>all admin products </h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Product Title</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>view</th>
+                </tr>
+                </thead>
+                <tbody>
+<!--                ap=adminproduct-->
+                {% for ap in productsall %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ap.title}}</td>
+                    <td><img src="{{ap.image.url}}" style="height:30%;width:30%;" ></td>
+                    <td>{{ap.selling_price}}</td>
+                    <td>{{ap.view_count}}</td>
+
+
+
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

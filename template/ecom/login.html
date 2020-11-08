@@ -1,0 +1,26 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+<style>
+    .errorlist{
+    color:red;
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <h1>Login.</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <input type="submit" value="Login" class="btn btn-success ">
+                {% if error %}
+                {{error}}
+                {% endif %}
+            </form>
+            <p>dont have an account? <a class="btn btn-info" href="{% url 'register' %}{% if request.GET.next %}?next={{request.GET.next }}{% endif %}">register</a></p>
+            <em>do u want to rest your password?<a href="{% url 'pwdrst' %}">restpwd</a></em>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

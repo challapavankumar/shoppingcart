@@ -1,0 +1,28 @@
+{% extends 'ecom/base.html' %}
+{% block title %}All products{% endblock %}
+{% block content %}
+<div class="container-fulid">
+    {% for cat in allcategories %}
+    <div class="alert alert-primary" id="cat" role="alert">{{cat.title}}
+     </div>
+
+
+
+
+    <div class="row mx-auto">
+        {% for p in cat.product_set.all %}
+            <div class="card mx-auto mb-2" style="width: 18rem;">
+                <img src="{{p.image.url}}" class="card-img-top" alt="..." style="height:300px;object-fit:cover">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'details' p.slug %}" >{{p.title}}</a></h5>
+                    <p class="card-text">Price:&nbsp;<strike>{{p.marked_price}}</strike>&nbsp;&nbsp;₹&nbsp;{{p.selling_price}}</p>
+                    <a href="{{p.image.url}}" class="btn btn-primary">Go somewhere</a>
+               </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

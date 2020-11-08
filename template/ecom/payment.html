@@ -1,0 +1,56 @@
+<html>
+<head>
+    <script src="https://unpkg.com/khalti-checkout-web@latest/dist/khalti-checkout.iffe.js"></script>
+</head>
+<body>
+<h1> this is payment gateway {{ord.total}}</h1>
+    <!-- Place this where you need payment button -->
+    <button id="payment-button">Pay with Khalti</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Place this where you need payment button -->
+    <!-- Paste this code anywhere in you body tag -->
+    <script>
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
+            "productIdentity": "ord_{{ord.id}}",
+            "productName": "ord_{{ord.id}}",
+            "productUrl": "http://127.0.0.1:8000/",
+            "paymentPreference": [
+                "MOBILE_BANKING",
+                "KHALTI",
+                "EBANKING",
+                "CONNECT_IPS",
+                "SCT",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    axios.get("/paymentverify_serverside/",{params:{"token":payload,token,
+                    "amount":payload.amount,
+                    "order_id":"{{ord.id}}"
+                    }
+                    }).then(function(resp){console.log(resp.data)
+                    })
+                    console.log(payload);
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount: {{ord.total}}*100});
+        }
+    </script>
+    <!-- Paste this code anywhere in you body tag -->
+
+</body>
+</html>

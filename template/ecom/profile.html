@@ -1,0 +1,58 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+<style>
+    span{
+   color:blue;
+
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>bujji</h1>
+
+
+                 <p> <span>Name:</span>{{customer.full_name}}</p><br>
+            <b><span>Username:</span>{{customer.username}}</b>
+            <br>
+            <b><span>email:</span>{{customer.email}}</b><br>
+           <em> <span>Address:</span>{{customer.address}}</em><br>
+            <em> <span>Address:</span>{{customer.joined_at}}</em>
+
+
+
+
+        </div>
+        <div class="col-md-6">
+            <h1>buji i miss u ra</h1>
+
+            <table class="table table-bordered table-secondary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sno</th>
+                      <th scope="col">Order Id</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Orderedate</th>
+                      <th scope="col">status</th>
+                    </tr>
+                  </thead>
+                      <tbody >
+                      {% for ord in orders %}
+                        <tr  class="table-primary">
+                          <td>{{forloop.counter}}</td>
+                         <td><a href="{% url 'orderdetails' ord.pk %}">order{{ord.id}}</a></td>
+                          <td>{{ord.total}}</td>
+
+                          <td>{{ord.created_at}}</td>
+                           <td>{{ord.order_status}}</td>
+
+                        </tr>
+                       {% endfor %}
+
+                      </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

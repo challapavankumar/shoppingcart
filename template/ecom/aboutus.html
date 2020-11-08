@@ -1,0 +1,33 @@
+{% extends 'ecom/base.html' %}
+
+{% load static %}
+{% block content %}
+<style>
+#img{
+background-image:url('https://images.unsplash.com/photo-1494459940152-1e911caa8cc5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80.jpg')
+
+}
+</style>
+
+<div class="maincontainer mt-3" id="img">
+
+ <h1 class="text-center " ><u><b>welcome to my wesite</b></u></h1>
+
+    <div class="text-center" >
+      <div class="row mx-auto">
+          <div class="col-md-4">
+              <img src="{% static 'images/challaa.jpg' %}" class="rounded" style="height:400px;" alt="...">
+          </div>
+          <div class="col-md-8">
+              <h1>
+
+              </h1>
+          </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

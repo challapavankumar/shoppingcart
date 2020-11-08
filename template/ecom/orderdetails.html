@@ -1,0 +1,49 @@
+{% extends 'ecom/base.html' %}
+{% load humanize %}
+{% block title %}Orderdetails{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row mx-auto">
+        <div class="col-md-8">
+            <h1> Order Details </h1>
+            <b><span>Order Id:</span></b>{{ord_obj.id}}<br>
+            <b><span>Order Status:</span></b>{{ord_obj.order_status}}<br>
+            <b><span>created_on</span></b> {{ord_obj.created_at}}{{ord_obj.created_at|timesince}}ago
+            <br>
+            <b><span >Customer Information:</span></b>{{ord_obj.ordered_by}} &nbsp;&nbsp;mobile&nbsp;{{ord_obj.mobile}}<br>
+            <b><span >Shippings Information:</span></b>{{ord_obj.shipping_adress}}&nbsp;&nbsp;{{ord_obj.email}}
+        </div>
+    </div>
+    <h3>Ordered Item</h3>
+    <table class="table">
+
+          <thead>
+            <tr>
+              <th scope="col">Sno</th>
+              <th scope="col">Item</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for cpdrt in ord_obj.cart.cartproduct_set.all %}
+
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                    <td><a href="{% url 'details' cpdrt.product.slug %}">{{cpdrt.product.title}}{{cpdrt.product.id}}</a></td>
+                  <td>{{cpdrt.rate}}</td>
+                    <td>{{cpdrt.quantity}}</td>
+                  <td>{{cpdrt.subtotal}}</td>
+                </tr>
+              {% endfor %}
+              <tr>
+                  <th colspan="4" class="text-right">Total:
+
+                  </th>
+                  <th>₹{{ord_obj.total|intcomma}}</th>
+              </tr>
+              </tbody>
+    </table>
+</div>
+{% endblock %}

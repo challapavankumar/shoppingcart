@@ -1,0 +1,23 @@
+{% extends 'ecom/base.html' %}
+{% block content %}
+<style>
+    .errorlist{
+    color:red;
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <h1>register form here...</h1>
+            <form method="POST" action=" ">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Enter" class="btn btn-success ">
+
+            </form>
+
+            <em> u have an account <a href="{% url 'login' %}" class="btn btn-info">Login</a> </em>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

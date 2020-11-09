@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
-import dj_database_url
-import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Ecom.urls'
@@ -85,10 +84,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASES = {
-#     'default': dj_database_url.config()
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -127,8 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[STATIC_DIR,]
-
-STATIC_ROOT = BASE_DIR/ 'staticfiles'
 MEDIA_URL='/image/download/'
 MEDIA_DIR=BASE_DIR
 
@@ -136,7 +129,6 @@ MEDIA_DIR=BASE_DIR
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
-EMAIL_HOST_USER='djangoframework7am@gmail.com'
-EMAIL_HOST_PASSWORD='SIRISHA9515@'
-STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage',
-django_heroku.settings(locals())
+EMAIL_HOST_USER='abcd@gmail.com'
+EMAIL_HOST_PASSWORD='*********'
+
